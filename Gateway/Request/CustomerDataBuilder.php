@@ -52,7 +52,10 @@ class CustomerDataBuilder implements BuilderInterface
             $result['shopperReference'] = $customerId;
         }
 
-        $result ['shopperEmail'] = $customerEmail;
+        if ($billingAddress->getTelephone()){
+		$result ['telephoneNumber'] = trim($billingAddress->getTelephone());
+	}
+	$result ['shopperEmail'] = $customerEmail;
 
         return $result;
     }
